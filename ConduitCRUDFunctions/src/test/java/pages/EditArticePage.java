@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class EditArticePage {
 
-	@FindBy(xpath="(//a[contains(text(),' Edit Article')])[1]")
+	@FindBy(xpath="(//a[contains(text(),'Edit Article')])[1]")
 	WebElement editArtickeLnk;
 
 	@FindBy(name = "title")
@@ -24,19 +24,16 @@ public class EditArticePage {
 
 	@FindBy(css = "button.btn.btn-lg.pull-xs-right.btn-primary")
 	WebElement publishArticleBtn;
+	
+	@FindBy(xpath = "//div[@class='container']/h1")
+	WebElement editedTitle;	
 
 	public EditArticePage(WebDriver driver)
 	{
 		PageFactory.initElements(driver, this);
 	}
 	
-	public boolean verifyArticleTitle() {
-		return (articleTitle.isDisplayed());
-	}
-
-	public boolean verifyArticleDescription() {
-		return (articleDesc.isDisplayed());
-	}
+	
 
 
 	public void editArticle(String titleTxt, String descriptionTxt, String bodyTxt, String tagsText)
@@ -50,5 +47,15 @@ public class EditArticePage {
 		articleBody.sendKeys(bodyTxt);
 		articleTags.sendKeys(tagsText);
 		publishArticleBtn.click();
+	}
+	
+	public String verifyArticleTitle() throws InterruptedException {
+		Thread.sleep(6000);
+		return (editedTitle.getText());
+	}
+
+	public String verifyArticleDescription() throws InterruptedException {
+		Thread.sleep(6000);
+		return (articleDesc.getText());
 	}
 }

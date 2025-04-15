@@ -38,12 +38,12 @@ public class ViewArticelTest {
 		PageFactory.initElements(driver, this);
 	}
 
-	public boolean verifyArticleTitle() {
-		return (articleTitle.isDisplayed());
+	public String verifyArticleTitle() {
+		return (articleTitle.getText());
 	}
 
-	public boolean verifyArticleDescription() {
-		return (articleDetails.isDisplayed());
+	public String verifyArticleDescription() {
+		return (articleDetails.getText());
 	}
 	
 	public void navigatetoGlobalFeed() {

@@ -39,7 +39,8 @@ public class NewArticelTest {
 		newArticleLnk.click();
 	}
 
-	public void enterArticleDetails(String titleTxt, String descriptionTxt, String bodyTxt, String tagsText) throws InterruptedException {
+	public void enterArticleDetails(String titleTxt, String descriptionTxt, String bodyTxt, String tagsText)
+			throws InterruptedException {
 		articleTitle.clear();
 		articleTitle.sendKeys(titleTxt);
 		articleDesc.clear();
@@ -47,13 +48,18 @@ public class NewArticelTest {
 		articleDesc.clear();
 		articleBody.sendKeys(bodyTxt);
 		articleTags.sendKeys(tagsText);
-		publishArticleBtn.click();
+
+		try {
+			publishArticleBtn.click();
+		} catch (Exception e) {
+			System.out.println("Title already exists..");
+		}
 		Thread.sleep(4000);
 	}
 
-	public boolean verifyNeArticleTitle() throws InterruptedException {
+	public String verifyNeArticleTitle() throws InterruptedException {
 		Thread.sleep(5000);
-		return (newArticleTitle.isDisplayed());
+		return (newArticleTitle.getText());
 	}
 
 }

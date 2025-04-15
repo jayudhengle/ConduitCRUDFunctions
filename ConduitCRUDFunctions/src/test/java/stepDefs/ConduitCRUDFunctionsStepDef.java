@@ -54,13 +54,12 @@ public class ConduitCRUDFunctionsStepDef {
 
 	@When("User enters Article details")
 	public void user_enters_article_details(io.cucumber.datatable.DataTable dataTable) throws InterruptedException {
-		newArticle.enterArticleDetails("12Test46", "12Test2", "1212Test3", "12Test4");
+		newArticle.enterArticleDetails("12Test54", "12Test2", "1212Test3", "12Test4");
 	}
 
 	@Then("Article must be created")
 	public void article_must_be_created() throws InterruptedException {
-		Assert.assertTrue(viewArticle.verifyArticleTitle());
-		Assert.assertTrue(viewArticle.verifyArticleDescription());
+		Assert.assertEquals(newArticle.verifyNeArticleTitle(), "12Test54");
 	}
 
 	@Given("User should be on Global Feed page")
@@ -73,29 +72,31 @@ public class ConduitCRUDFunctionsStepDef {
 		viewArticle.getArticleDetails(articleName);
 	}
 
-//	@Then("Article detail page must be displayed")
-//	public void article_detail_page_must_be_displayed() {
-//	    // Write code here that turns the phrase above into concrete actions
-//	    throw new io.cucumber.java.PendingException();
-//	}
-
-	@Given("Article detail page must be displayed")
-	public void article_detail_page_must_be_displayed() throws InterruptedException {
-		Thread.sleep(3000);
-		Assert.assertTrue(viewArticle.verifyArticleTitle());
-		Assert.assertTrue(viewArticle.verifyArticleDescription());
+	@Then("Article detail page must be displayed")
+	public void article_detail_page_must_be_displayed()  {	
+		Assert.assertEquals(viewArticle.verifyArticleTitle(), "12Test52");
+	}	
+	
+	@Given("Article detail page is available")
+	public void article_detail_page_is_available()  {	
+		viewArticle.navigatetoGlobalFeed();
+		viewArticle.getArticleDetails("12Test51");
 	}
 
 	@When("User update article detail")
 	public void user_update_article_detail() {
-		editArticle.editArticle("12Test47", "12Test2", "1212Test3", "12Test4");
+		editArticle.editArticle("12Test56", "12Test2", "1212Test3", "12Test4");
 	}
 
 	@Then("Article detail must be updated")
 	public void article_detail_must_be_updated() throws InterruptedException {
-		Assert.assertTrue(editArticle.verifyArticleDescription());
-		Assert.assertTrue(editArticle.verifyArticleTitle());
-		Thread.sleep(3000);
+		Assert.assertEquals(editArticle.verifyArticleTitle(), "12Test56");
+	}
+	
+	@Given("Article {string} detail page is available")
+	public void article_detail_page_is_available_delete(String article)  {	
+		viewArticle.navigatetoGlobalFeed();
+		viewArticle.getArticleDetails(article);
 	}
 
 	@When("User delete article")
@@ -103,9 +104,8 @@ public class ConduitCRUDFunctionsStepDef {
 		deleteArticle.deletetheArticle();
 	}
 
-	@Then("Article {string} must be deleted")
-	public void article_must_be_deleted(String article) throws InterruptedException {
-		deleteArticle.verifyDelete(article);
+	@Then("Article must be deleted")
+	public void article_must_be_deleted() throws InterruptedException {
+		deleteArticle.verifyDelete("12Test51");
 	}
-
 }

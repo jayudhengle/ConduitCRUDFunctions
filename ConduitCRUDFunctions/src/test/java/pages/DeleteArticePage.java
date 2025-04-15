@@ -46,7 +46,6 @@ public class DeleteArticePage {
 	
 	public boolean verifyDelete(String article) throws InterruptedException
 	{
-		
 		clickGloblaFeed.click();
 		Thread.sleep(3000);
 		for (WebElement i : articleCheck)

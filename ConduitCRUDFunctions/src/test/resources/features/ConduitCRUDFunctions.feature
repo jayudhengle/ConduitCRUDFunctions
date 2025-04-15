@@ -1,6 +1,6 @@
 Feature: Conduit CRUD Functions
 
-  Scenario: Login into App
+  Background: Login into App
     Given User is on Login page
     When User provide "TestUser@gmail.com" and "Test@123"
     Then User should be on Home Page
@@ -13,15 +13,15 @@ Feature: Conduit CRUD Functions
 
   Scenario: View Article
     Given User should be on Global Feed page
-    When User select an article "12Test46"
+    When User select an article "12Test52"
     Then Article detail page must be displayed
 
   Scenario: Update an Article
-    Given Article detail page must be displayed
+    Given Article detail page is available
     When User update article detail
     Then Article detail must be updated
 
   Scenario: Delete an Article
-    Given Article detail page must be displayed
+    Given Article "12Test51" detail page is available
     When User delete article
-    Then Article "12Test47" must be deleted
+    Then Article must be deleted
