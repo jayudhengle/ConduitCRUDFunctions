@@ -28,7 +28,7 @@ public class NewArticelTest {
 	@FindBy(xpath = "//div[@class='container']//h1")
 	WebElement newArticleTitle;
 
-	@FindBy(css = "span.error-messages:")
+	@FindBy(css = "span.error-messages")
 	WebElement articleError;
 
 	public NewArticelTest(WebDriver driver) {
@@ -55,6 +55,25 @@ public class NewArticelTest {
 			System.out.println("Title already exists..");
 		}
 		Thread.sleep(4000);
+	}
+	
+	public void enterDuplicateArticleDetails(String titleTxt, String descriptionTxt, String bodyTxt, String tagsText)
+			throws InterruptedException {
+		articleTitle.clear();
+		articleTitle.sendKeys(titleTxt);
+		articleDesc.clear();
+		articleDesc.sendKeys(descriptionTxt);
+		articleDesc.clear();
+		articleBody.sendKeys(bodyTxt);
+		articleTags.sendKeys(tagsText);
+		publishArticleBtn.click();
+		Thread.sleep(3000);		
+	}
+	
+	
+	public String validateDuplicateError()
+	{
+		return (articleError.getText());
 	}
 
 	public String verifyNeArticleTitle() throws InterruptedException {
