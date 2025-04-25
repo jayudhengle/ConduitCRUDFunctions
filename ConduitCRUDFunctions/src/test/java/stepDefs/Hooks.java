@@ -32,7 +32,7 @@ public class Hooks
 	}
 	
 	@AfterAll
-	public void closeBrowser()
+	public static void closeBrowser()
 	{
 		TestBase.tearDown();
 	}
