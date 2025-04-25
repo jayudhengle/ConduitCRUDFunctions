@@ -9,7 +9,7 @@ import io.cucumber.testng.CucumberOptions;
 		monochrome = true,
 		dryRun = false,
 		plugin = {"pretty",
-				"html:target/Reports/HtmlReport.html"}			
+				"html:target/Reports"}			
 		)
 
 
