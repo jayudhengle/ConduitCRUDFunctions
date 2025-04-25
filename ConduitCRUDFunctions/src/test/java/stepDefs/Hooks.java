@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 import base.TestBase;
 import io.cucumber.java.After;
+import io.cucumber.java.AfterAll;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;
 
@@ -20,7 +21,7 @@ public class Hooks
 	}
 	
 	@After
-	public void tearDown(Scenario scenario)
+	public void takeScreenshot(Scenario scenario)
 	{
 		if(scenario.isFailed())
 		{
@@ -28,5 +29,11 @@ public class Hooks
 			byte[] img = scr.getScreenshotAs(OutputType.BYTES);
 			scenario.attach(img, "image/png", "FailedScenarioImage");
 		}
+	}
+	
+	@AfterAll
+	public void closeBrowser()
+	{
+		TestBase.tearDown();
 	}
 }
