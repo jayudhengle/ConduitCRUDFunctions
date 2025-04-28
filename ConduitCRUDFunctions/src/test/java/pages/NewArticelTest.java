@@ -45,8 +45,9 @@ public class NewArticelTest {
 		articleTitle.sendKeys(titleTxt);
 		articleDesc.clear();
 		articleDesc.sendKeys(descriptionTxt);
-		articleDesc.clear();
+		articleBody.clear();
 		articleBody.sendKeys(bodyTxt);
+		articleTags.clear();
 		articleTags.sendKeys(tagsText);
 
 		try {
@@ -73,7 +74,14 @@ public class NewArticelTest {
 	
 	public String validateDuplicateError()
 	{
-		return (articleError.getText());
+		try
+		{
+			return (articleError.getText());
+		}
+		catch(Exception e)
+		{
+			return("New Text");
+		}
 	}
 
 	public String verifyNeArticleTitle() throws InterruptedException {

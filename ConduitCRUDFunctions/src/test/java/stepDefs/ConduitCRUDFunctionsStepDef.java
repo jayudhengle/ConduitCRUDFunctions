@@ -1,7 +1,5 @@
 package stepDefs;
 
-import static org.testng.Assert.assertTrue;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
@@ -54,17 +52,17 @@ public class ConduitCRUDFunctionsStepDef {
 
 	@When("User enters Article details")
 	public void user_enters_article_details(io.cucumber.datatable.DataTable dataTable) throws InterruptedException {
-		newArticle.enterArticleDetails("12Test68", "12Test2", "1212Test3", "12Test4");
+		newArticle.enterArticleDetails("12Test72", "12Test2", "1212Test3", "12Test4");
 	}
 
 	@Then("Article must be created")
 	public void article_must_be_created() throws InterruptedException {
-		Assert.assertEquals(newArticle.verifyNeArticleTitle(), "12Test68");
+		Assert.assertEquals(newArticle.verifyNeArticleTitle(), "12Test72");
 	}
 
 	@When("User enters Duplicate Article {string}")
 	public void user_enters_duplicate_article(String duplcateArticle) throws InterruptedException {
-		newArticle.enterDuplicateArticleDetails("12Test68", "12Test2", "1212Test3", "12Test4");
+		newArticle.enterDuplicateArticleDetails("12Test72", "12Test2", "1212Test3", "12Test4");
 	}
 
 	@Then("Must throw duplicate error")
@@ -84,23 +82,23 @@ public class ConduitCRUDFunctionsStepDef {
 
 	@Then("Article detail page must be displayed")
 	public void article_detail_page_must_be_displayed() {
-		Assert.assertEquals(viewArticle.verifyArticleTitle(), "12Test68");
+		Assert.assertEquals(viewArticle.verifyArticleTitle(), "12Test72");
 	}
 
 	@Given("Article detail page is available")
 	public void article_detail_page_is_available() {
 		viewArticle.navigatetoGlobalFeed();
-		viewArticle.getArticleDetails("12Test68");
+		viewArticle.getArticleDetails("12Test73");
 	}
 
 	@When("User update article detail")
 	public void user_update_article_detail() {
-		editArticle.editArticle("12Test69", "12Test2", "1212Test3", "12Test4");
+		editArticle.editArticle("12Test73", "12Test2", "1212Test3", "12Test4");
 	}
 
 	@Then("Article detail must be updated")
 	public void article_detail_must_be_updated() throws InterruptedException {
-		Assert.assertEquals(editArticle.verifyArticleTitle(), "12Test69");
+		Assert.assertEquals(editArticle.verifyArticleTitle(), "12Test71");
 	}
 
 	@Given("Article {string} detail page is available")
@@ -116,6 +114,6 @@ public class ConduitCRUDFunctionsStepDef {
 
 	@Then("Article must be deleted")
 	public void article_must_be_deleted() throws InterruptedException {
-		deleteArticle.verifyDelete("12Test69");
+		deleteArticle.verifyDelete("12Test73");
 	}
 }

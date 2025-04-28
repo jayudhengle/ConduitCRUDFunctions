@@ -45,6 +45,7 @@ public class EditArticePage {
 		articleDesc.sendKeys(descriptionTxt);
 		articleBody.clear();;
 		articleBody.sendKeys(bodyTxt);
+		articleTags.clear();
 		articleTags.sendKeys(tagsText);
 		publishArticleBtn.click();
 	}

@@ -13,12 +13,12 @@ Feature: Conduit CRUD Functions
 
   Scenario: Duplicate Article
     Given User should be on New Article Page
-    When User enters Duplicate Article "12Test68"
+    When User enters Duplicate Article "12Test72"
     Then Must throw duplicate error
 
   Scenario: View Article
     Given User should be on Global Feed page
-    When User select an article "12Test68"
+    When User select an article "12Test72"
     Then Article detail page must be displayed
 
   Scenario: Update an Article
@@ -27,6 +27,6 @@ Feature: Conduit CRUD Functions
     Then Article detail must be updated
 
   Scenario: Delete an Article
-    Given Article "12Test69" detail page is available
+    Given Article "12Test73" detail page is available
     When User delete article
     Then Article must be deleted

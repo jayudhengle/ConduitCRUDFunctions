@@ -1,5 +1,8 @@
 package stepDefs;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -15,14 +18,15 @@ public class Hooks
 	WebDriver driver;
 	
 	@BeforeAll
-	public static void setUpDriver()
+	public static void setUpDriver() throws IOException
 	{
 		TestBase.initDriver();
 	}
 	
 	@After
-	public void takeScreenshot(Scenario scenario)
+	public void takeScreenshot(Scenario scenario) throws MalformedURLException
 	{
+		driver = TestBase.getDriver();
 		if(scenario.isFailed())
 		{
 			TakesScreenshot scr = (TakesScreenshot)driver;
