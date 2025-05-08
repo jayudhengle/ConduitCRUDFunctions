@@ -25,7 +25,9 @@ public class TestBase {
 	{
 		
 		System.out.println(System.getProperty("user.dir"));
-		FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + ".\\src\\test\\resources\\Properties\\myData.properties");
+		String filePath = Paths.get(System.getProperty("user.dir"), "src", "test", "resources", "Properties", "myData.properties").toString();
+		FileInputStream fis = new FileInputStream(filePath);
+
 		Properties prop = new Properties();
 		prop.load(fis);
 		String browser = prop.getProperty("browser");
